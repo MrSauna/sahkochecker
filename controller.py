@@ -5,7 +5,6 @@ import pytz
 from configuration import *
 #import RPi.GPIO as GPIO
 
-asdfasdf
 
 def getprices():
 
