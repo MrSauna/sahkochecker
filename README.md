@@ -1,5 +1,5 @@
 # Sähköchecker
-Python 3.6.1sdf
+Python 3.6.1
 non standard modules:
 * pytz
 
