@@ -6,7 +6,7 @@ from configuration import *
 #import RPi.GPIO as GPIO
 
 
-def getprices():
+def get_prices():
 
     global pricedict
     pricedict = {}
@@ -34,7 +34,7 @@ def getprices():
     print(pricedict)
     print("hintoja palautettu: " + str(len(pricedict)))
 
-def getweather():
+"""def get_weather():
 
     req = urllib.request.Request(url="http://api.openweathermap.org/data/2.5/forecast?id=660158&APPID="+appid+"&mode=xml")
 
@@ -42,9 +42,9 @@ def getweather():
         response = str(f.read().decode("utf-8"))
         root = ET.fromstring(response)
 
-    for i in root.iter(""):
+    for i in root.iter(""):"""
 
-def shouldsave():
+def should_save():
 
     nyt = datetime.datetime.now()
 
@@ -80,5 +80,6 @@ def saving(säästetään):
         F.write(str(0))
 
 
-getprices()
-saving(shouldsave())
+if __name__ == "__main__":
+    get_prices()
+    saving(should_save())
