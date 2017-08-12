@@ -44,6 +44,33 @@ def get_prices():
 
     for i in root.iter(""):"""
 
+def get_solar():
+
+    req = urllib.request.Request(url="https://developer.nrel.gov/api/pvwatts/v5.xml?api_key="+api_key+"&system_capacity=1&module_type=0&losses=10&array_type=1&tilt=45&azimuth=180&address=espoo&dataset=intl&timeframe=hourly")
+
+    with urllib.request.urlopen(req) as f:
+        response = str(f.read().decode("utf-8"))
+        root = ET.fromstring(response)
+
+        ac = root.find(".//ac")
+        print(ac)
+        ac_dict = []
+
+        for i in ac.iter("ac"):
+            ac_dict.append(i.text)
+        ac_dict.pop(0)
+
+        print(ac_dict)
+
+        timenow = datetime.datetime.utcnow()
+
+        ac_now = ac_dict[
+            (int(timenow.strftime("%j"))-1)*24
+            +int((timenow.strftime("%H")))
+        ]
+
+        print(ac_now)
+
 def should_save():
 
     nyt = datetime.datetime.now()
@@ -83,3 +110,4 @@ def saving(säästetään):
 if __name__ == "__main__":
     get_prices()
     saving(should_save())
+    get_solar()
