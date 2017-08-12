@@ -44,7 +44,7 @@ def get_prices():
 
     for i in root.iter(""):"""
 
-def get_solar():
+"""def get_solar():
 
     req = urllib.request.Request(url="https://developer.nrel.gov/api/pvwatts/v5.xml?api_key="+api_key+"&system_capacity=1&module_type=0&losses=10&array_type=1&tilt=45&azimuth=180&address=espoo&dataset=intl&timeframe=hourly")
 
@@ -69,7 +69,7 @@ def get_solar():
             +int((timenow.strftime("%H")))
         ]
 
-        print(ac_now)
+        print(ac_now)"""
 
 def should_save():
 
@@ -110,4 +110,4 @@ def saving(säästetään):
 if __name__ == "__main__":
     get_prices()
     saving(should_save())
-    get_solar()
+    #get_solar()
